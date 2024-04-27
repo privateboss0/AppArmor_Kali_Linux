@@ -3,4 +3,4 @@ AppArmor profiles for application security, microsegmentation and Zero Trust for
 
 HARDWARE TESTED
 
--Raspberry pi5, so I cannot guarantee this would work for a different hardware
+-Raspberry pi5, so no cannot guarantee this would work with a different hardware
