@@ -1,0 +1,36 @@
+# Last Modified: Fri Apr 26 14:43:53 2024
+include <tunables/global>
+
+# vim:syntax=apparmor
+# AppArmor policy for openvpn
+
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2024 privateboss01
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+
+
+/usr/sbin/openvpn {
+  include <abstractions/base>
+  include <abstractions/lightdm>
+
+  capability net_admin,
+
+  ptrace read peer=unconfined,
+
+  /etc/openvpn/update-resolv-conf mrix,
+  /home/*/Documents/VPNFILE.udp.ovpn r,
+  /usr/bin/env ix,
+  /usr/bin/systemd-ask-password mrix,
+  owner /etc/** mrwk,
+  owner /proc/filesystems r,
+  owner /proc/sys/kernel/cap_last_cap r,
+  owner /{,var/}run/** mrwk,
+
+}
