@@ -1,6 +1,9 @@
 # Last Modified: Sat May 25 21:10:07 2024
 include <tunables/global>
 
+#Tshark is the CLI only version of Wireshark, therefore it should be used
+#in conjuction with the TCPDUMP app-armor profile
+
 # vim:syntax=apparmor
 # AppArmor policy for tshark
 # ------------------------------------------------------------------
