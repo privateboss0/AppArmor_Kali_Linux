@@ -2,7 +2,10 @@
 abi <abi/3.0>,
 
 include <tunables/global>
-#tcpdump has to be used with wireshark
+
+#Wireshark is the Frontend/GUI version of Tshark, therefore it should be used
+#in conjuction with the TCPDUMP app-armor profile
+
 # vim:syntax=apparmor
 # AppArmor policy for wireshark
 # ------------------------------------------------------------------
