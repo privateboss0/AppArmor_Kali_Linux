@@ -1,0 +1,40 @@
+# Last Modified: Sat May 25 21:10:07 2024
+include <tunables/global>
+
+# vim:syntax=apparmor
+# AppArmor policy for tshark
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2024 privateboss01
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+
+/usr/bin/tshark {
+  include <abstractions/base>
+  include <abstractions/lightdm>
+  include <abstractions/totem>
+
+  capability net_admin,
+  capability net_raw,
+
+  network bluetooth raw,
+  network packet raw,
+
+  /proc/cpuinfo r,
+  /usr/bin/dumpcap mrix,
+  /usr/lib/aarch64-linux-gnu/wireshark/extcap/androiddump mrix,
+  /usr/lib/aarch64-linux-gnu/wireshark/extcap/ciscodump mrix,
+  /usr/lib/aarch64-linux-gnu/wireshark/extcap/dpauxmon mrix,
+  /usr/lib/aarch64-linux-gnu/wireshark/extcap/randpktdump mrix,
+  /usr/lib/aarch64-linux-gnu/wireshark/extcap/sdjournal mrix,
+  /usr/lib/aarch64-linux-gnu/wireshark/extcap/sshdump mrix,
+  /usr/lib/aarch64-linux-gnu/wireshark/extcap/udpdump mrix,
+  /usr/lib/aarch64-linux-gnu/wireshark/extcap/wifidump mrix,
+  owner /home/*/.config/wireshark/preferences r,
+
+}
