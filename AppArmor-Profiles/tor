@@ -1,0 +1,24 @@
+# Last Modified: Tue May 21 01:09:44 2024
+include <tunables/global>
+
+# vim:syntax=apparmor
+
+
+profile system_tor flags=(attach_disconnected) {
+  include <abstractions/lightdm>
+  include <abstractions/tor>
+  include <local/system_tor>
+
+  /var/lib/tor/** r,
+  /{,var/}run/systemd/notify w,
+  /{,var/}run/tor/ r,
+  /{,var/}run/tor/control w,
+  /{,var/}run/tor/control.authcookie w,
+  /{,var/}run/tor/control.authcookie.tmp rw,
+  /{,var/}run/tor/socks w,
+  /{,var/}run/tor/tor.pid w,
+  owner /var/lib/tor/ r,
+  owner /var/lib/tor/** rwk,
+  owner /var/log/tor/* w,
+
+}
