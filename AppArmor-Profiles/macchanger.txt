@@ -1,0 +1,23 @@
+# Last Modified: Mon May 27 04:05:50 2024
+include <tunables/global>
+
+# vim:syntax=apparmor
+# AppArmor policy for macchanger
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2024 privateboss01
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+
+/usr/bin/macchanger {
+  include <abstractions/base>
+  include <abstractions/lightdm>
+
+  capability net_admin,
+
+}
