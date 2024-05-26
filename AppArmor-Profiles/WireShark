@@ -3,8 +3,8 @@ abi <abi/3.0>,
 
 include <tunables/global>
 
-#Wireshark is the Frontend/GUI version of Tshark, therefore it should be used
-#in conjuction with the TCPDUMP app-armor profile
+#Wireshark is the Frontend/GUI and Backend/CLI version of a network packet analyzer, 
+#therefore it should be used in conjuction with the TCPDUMP app-armor profile
 
 # vim:syntax=apparmor
 # AppArmor policy for wireshark
