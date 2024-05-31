@@ -1,0 +1,63 @@
+# Last Modified: Sat Jun  1 06:15:56 2024
+include <tunables/global>
+
+# vim:syntax=apparmor
+# AppArmor policy for sudo
+# ------------------------------------------------------------------
+#
+#    Copyright (C) 2024 privateboss01
+#
+#    This program is free software; you can redistribute it and/or
+#    modify it under the terms of version 2 of the GNU General Public
+#    License published by the Free Software Foundation.
+#
+# ------------------------------------------------------------------
+
+
+/usr/bin/sudo {
+  include <abstractions/base>
+  include <abstractions/dovecot-common>
+  include <abstractions/lightdm>
+  include <abstractions/postfix-common>
+  include <abstractions/python>
+  include <abstractions/tor>
+  include <abstractions/totem>
+  include <abstractions/ubuntu-konsole>
+
+  capability audit_write,
+  capability mac_admin,
+  capability net_admin,
+  capability sys_resource,
+
+  ptrace read peer=firejail-default,
+  ptrace read peer=system_tor,
+  ptrace read peer=unconfined,
+
+  /**/ mrwk,
+  /dev/** mrwk,
+  /etc/openvpn/update-resolv-conf mrix,
+  /home/*/Documents/Netherlands.protonvpn.udp.ovpn r,
+  /proc/*/attr/apparmor/current r,
+  /proc/*/stat r,
+  /usr/bin/bash mrix,
+  /usr/bin/nala mrix,
+  /usr/bin/python3.11 ix,
+  /usr/sbin/aa-logprof mrix,
+  /usr/sbin/openvpn mrix,
+  owner /etc/** mrwk,
+  owner /home/kali/** rw,
+  owner /proc/*/limits r,
+  owner /proc/*/mounts r,
+  owner /proc/filesystems r,
+  owner /proc/sys/kernel/cap_last_cap r,
+  owner /proc/sys/kernel/random/boot_id r,
+  owner /proc/sys/kernel/seccomp/actions_avail r,
+  owner /root/.bash_history r,
+  owner /root/.bashrc r,
+  owner /root/.local/share/nano/search_history r,
+  owner /root/.profile r,
+  owner /sys/** mrw,
+  owner /var/** mrwk,
+  owner /{,var/}run/** mrwk,
+
+}
