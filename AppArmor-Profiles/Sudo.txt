@@ -2,7 +2,7 @@
 include <tunables/global>
 
 # vim:syntax=apparmor
-# AppArmor policy for sudo
+# AppArmor policy for sudo and Google-Authenticator
 # ------------------------------------------------------------------
 #
 #    Copyright (C) 2024 privateboss01
